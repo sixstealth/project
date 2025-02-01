@@ -1,0 +1,23 @@
+                            header {
+                                text-align: center;
+                                border-radius: 30px;
+                                padding: 25px;
+                                background-color: rgb(190, 79, 166);
+                                resize: both;
+                            }
+                            
+                            #logo {
+                                display: flex;
+                                margin: 0;
+                                width: 100px;
+                                height: auto;
+                            }
+                            
+                            body {
+                                background-color: rgb(237, 240, 240);
+                            }
+                            
+                            h1 {
+                                display: flex;
+                                margin: auto;
+                            }
