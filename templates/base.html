@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%}{%endblock%}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+</head>
+
+
+<body>
+    {%block body%}{%endblock%}
+    <div id="page-container">
+        <div id="content-wrap">
+            <header>
+
+                <img class="logo" src="{{ url_for('static', filename='images/logo.png')}}" alt="our logo">
+
+                <span class="header-text">Best Restraunt</span>
+                <ul class="header-menu">
+                    <li><a href="index">Home</a></li>
+                    <li><a href="menu">Menu</a></li>
+                    <li><a href="about">About Us</a></li>
+                    <li><a href="contact">Contact</a></li>
+                </ul>
+
+
+            </header>
+
+        </div>
+
+
+        <footer>
+            h
+        </footer>
+    </div>
+
+</body>
+
+</html>
