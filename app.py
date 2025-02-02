@@ -8,7 +8,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///shop.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
-<<<<<<< HEAD
+
 # login_manager = LoginManager()
 # login_manager.init_app(app)
 # # class User(db>model, UserMixin):
@@ -18,17 +18,17 @@ db = SQLAlchemy(app)
 # @login_manager.user.loader
 # def load_user(user_id):
 #     return User.query.get(int(user_id))
-=======
-login_manager = LoginManager()
-login_manager.init_app(app)
-class User(db>model, UserMixin):
-    id = db.Column(db.String(150), unique = True, nullable = False)
-    password = db.Column(db.String(150), nullable = False)
 
-@login_manager.user.loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
->>>>>>> d1199e12dd158a31da5d279bb1625a2cc17bd2e3
+# login_manager = LoginManager()
+# login_manager.init_app(app)
+# class User(db>model, UserMixin):
+#     id = db.Column(db.String(150), unique = True, nullable = False)
+#     password = db.Column(db.String(150), nullable = False)
+
+# @login_manager.user.loader
+# def load_user(user_id):
+#     return User.query.get(int(user_id))
+
 class Item(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String, nullable = False)
