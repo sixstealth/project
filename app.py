@@ -1,6 +1,9 @@
 from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+app.config['SQLAlCHEMY_DATABASE_URI'] = 'sqllite:///restaraunt.db'
+db = SQLAlchemy(app)
 
 @app.route('/')
 def index():
