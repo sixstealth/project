@@ -8,6 +8,7 @@
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/logo.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/orders.css') }}">
 
 </head>
 
@@ -23,7 +24,7 @@
                     <ul class="header-menu">
 
                         <li><a href="addform">Add a Product</a></li>
-                        <li><a href="menu">Orders</a></li>
+                        <li><a href="orders">Orders</a></li>
                         
                         {% if current_user.is_authenticated %}
                         <div class="logout-user">

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Menu{% endblock %}
+
+{% block menu %}
+<div class="container">
+    {% if items %}
+        <div class="menu-items">
+            {% for el in items %}
+                <div class="pizza-card">
+                    {% if el.image_filename %}
+                        <img src="{{ url_for('static', filename='uploads/' + el.image_filename) }}" alt="Product Image">
+                    {% else %}
+                        <p>No image available</p>
+                    {% endif %}
+                    <h3>{{ el.title }}</h3>
+                    <p>{{ el.text }}</p>
+                    <p class="price">${{ el.price }}</p>
+                    <form action="{{ url_for('add_to_cart', item_id=el.id) }}" method="POST">
+                        <input type="number" name="quantity" value="1" min="1" />
+                        <button type="submit" class="btn btn-success">Add to Cart</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No pizzas available.</p>
+    {% endif %}
+</div>
+{% endblock %}

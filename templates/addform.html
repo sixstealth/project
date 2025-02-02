@@ -1,27 +1,45 @@
-{%extends 'admin.html'%}
+{% extends 'admin.html' %}
 
-{%block title%}
-<title>Admin Panel</title>
-{%endblock%}
+{% block title %}
+<title>Admin Panel - Add Products</title>
+{% endblock %}
 
-{%block addform%}
-<div class="adding-form">
-    <h1>
-        <img class="adding_the_product_text" src="{{ url_for('static', filename='images/adding_the_product_text.png')}}" alt="Adding The Product">
-    </h1>
-    <form method="post" enctype="multipart/form-data">
-        <label for="title">Product Title</label>
-        <input type="text" name="title" id="title" placeholder="Product Title" required>
+{% block addform %}
+<div class="admin-container">
+    <div class="add-form">
+        <h1>
+            <img class="adding_the_product_text" src="{{ url_for('static', filename='images/adding_the_product_text.png') }}" alt="Adding The Product">
+        </h1>
+        <form method="post" enctype="multipart/form-data">
+            <label for="title">Product Title</label>
+            <input type="text" name="title" id="title" placeholder="Product Title" required>
 
-        <label for="price">Price</label>
-        <input type="number" name="price" id="price" placeholder="Price" required>
+            <label for="price">Price</label>
+            <input type="number" name="price" id="price" placeholder="Price" required>
 
-        <label for="image">Upload Image</label>
-        <input type="file" name="image" id="image" accept="image/*" required>
+            <label for="image">Product Image</label>
+            <input type="file" name="image" id="image" accept="image/*">
 
-        <button class="btn btn-success" type="submit">Add a Product</button>
-    </form>
+            <button class="btn btn-success" type="submit">Add a Product</button>
+        </form>
+    </div>
+
+    <div class="product-list">
+        <h2>Product List</h2>
+        {% for el in data %}
+        <div class="product-item">
+            <h3>{{ el.title }}</h3>
+            <p>Price: ${{ el.price }}</p>
+            {% if el.image_filename %}
+            <img src="{{ url_for('static', filename='uploads/' + el.image_filename) }}" alt="Product Image" style="max-width: 100%; border-radius: 8px;">
+            {% else %}
+            <p>No image available</p>
+            {% endif %}
+            <form method="POST" action="{{ url_for('delete', item_id=el.id) }}">
+                <button class="btn btn-danger" type="submit">Delete Product</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
 </div>
-
-
-{%endblock%}
+{% endblock %}

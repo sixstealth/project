@@ -1,0 +1,32 @@
+{% extends 'admin.html' %}
+
+{% block title %}
+<title>Admin Panel - Orders</title>
+{% endblock %}
+
+{% block addform %}
+<div class="admin-container">
+    <div class="orders-list">
+        <h2>Orders</h2>
+        {% for order in orders %}
+            <div class="order-item">
+                <p>Order ID: {{ order.id }}</p>
+                <p>Pizza: {{ order.item.title }}</p>
+                <p>Quantity: {{ order.quantity }}</p>
+                <p>Status: 
+                    {% if order.status == 'Pending' %}
+                        <span class="pending-status">Pending</span>
+                    {% else %}
+                        <span class="completed-status">Completed</span>
+                    {% endif %}
+                </p>
+                {% if order.status == 'Pending' %}
+                    <form action="{{ url_for('mark_as_completed', order_id=order.id) }}" method="POST">
+                        <button class="btn btn-success" type="submit">Mark as Completed</button>
+                    </form>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

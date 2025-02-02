@@ -1,0 +1,85 @@
+/* Стилі для кошика */
+.cart-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.cart-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
+    color: #333;
+}
+
+.cart-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cart-container li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+.cart-container h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.cart-container p {
+    margin: 5px 0;
+    color: #777;
+}
+
+.cart-container .price {
+    font-weight: bold;
+    color: #000;
+}
+
+.cart-container button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cart-container button:hover {
+    background-color: #218838;
+}
+
+.cart-container form button {
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+}
+
+.cart-container form button:hover {
+    background-color: #c82333;
+}
+
+.cart-container .checkout {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.cart-container .total-price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    margin-top: 15px;
+}
+
+.cart-container .empty-cart {
+    text-align: center;
+    font-size: 1.2em;
+    color: #555;
+}
