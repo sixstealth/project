@@ -48,7 +48,7 @@ class Order(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     item_id = db.Column(db.Integer, db.ForeignKey('item.id'), nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
-    status = db.Column(db.String(20), default='Pending')  # Статус: 'Pending' або 'Completed'
+    status = db.Column(db.String(20), default='Pending')  
 
     user = db.relationship('User', backref=db.backref('orders', lazy=True))
     item = db.relationship('Item', backref=db.backref('orders', lazy=True))
@@ -67,7 +67,6 @@ class User(db.Model, UserMixin):
     def set_password(self, password):
         self.password = generate_password_hash(password)
 
-    # Метод для перевірки пароля
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
@@ -109,7 +108,7 @@ def delete(item_id):
 def mark_as_completed(order_id):
     order = Order.query.get_or_404(order_id)
 
-    # Перевіряємо, чи це адмін
+
     if current_user.is_authenticated and current_user.username == 'admin':
         order.status = 'Completed'
         db.session.commit()
@@ -122,22 +121,22 @@ def mark_as_completed(order_id):
 @app.route('/orders')
 @login_required
 def orders():
-    # Перевіряємо, чи це адмін
+ 
     if current_user.username != 'admin':
         flash('You are not authorized to view this page.')
         return redirect(url_for('menu'))
 
-    orders = Order.query.filter_by(status='Pending').all()  # Лише ордери в статусі Pending
+    orders = Order.query.filter_by(status='Pending').all() 
     return render_template('orders.html', orders=orders)
 
 @app.route('/add_to_cart/<int:item_id>', methods=['POST'])
 @login_required
 def add_to_cart(item_id):
-    quantity = int(request.form.get('quantity', 1))  # Отримуємо кількість
+    quantity = int(request.form.get('quantity', 1))  
 
     item = Item.query.get_or_404(item_id)
     
-    # Створюємо новий ордер
+
     order = Order(user_id=current_user.id, item_id=item.id, quantity=quantity)
 
     db.session.add(order)
@@ -180,7 +179,7 @@ def checkout():
 
         return redirect(url_for('order_confirmation', order_id=new_order.id))
     
-    # Отримуємо всі доступні товари для списку
+
     items = Item.query.all()
     return render_template('checkout.html', items=items)
 
@@ -193,7 +192,7 @@ def addform():
         
         title = request.form.get('title')
         price = request.form.get('price')
-        image = request.files.get('image')  # Отримуємо зображення з форми
+        image = request.files.get('image') 
 
         print(f"Отримано title: {title}, price: {price}")  
 
@@ -202,12 +201,12 @@ def addform():
             print("Форма не заповнена")
             return render_template('addform.html')
 
-        if image and allowed_file(image.filename):  # Перевіряємо, чи є зображення
+        if image and allowed_file(image.filename):  
             filename = secure_filename(image.filename)
             image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             image.save(image_path)
         else:
-            image_path = None  # Якщо зображення немає, залишаємо порожнє поле
+            image_path = None  
 
         try:
             item = Item(title=title, price=float(price), text="", image_filename=filename if image_path else None)

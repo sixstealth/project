@@ -1,4 +1,4 @@
-/* Загальні стилі для сторінки */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #eae0ce;
@@ -7,65 +7,64 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Задає висоту екрану */
+    height: 100vh; 
     box-sizing: border-box;
 }
 
-/* Контейнер для чекауту */
+
 .checkout-container {
-    max-width: 600px; /* Максимальна ширина контейнера */
-    width: 100%; /* Ширина контейнера буде 100%, але з обмеженням */
+    max-width: 600px; 
+    width: 100%; 
     background-color: #fff;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 50px auto; /* Відступи зверху і знизу для центрування */
+    margin: 50px auto; 
     text-align: center;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-/* Заголовок */
+
 .checkout-container h2 {
-    font-size: 24px; /* Менший розмір заголовка */
+    font-size: 24px; 
     font-family: 'Times New Roman', Times, serif;
     color: #46271b;
     margin-bottom: 20px;
 }
 
-/* Стилі для форми */
+
 form {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-/* Групи полів */
 .form-group {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-/* Поля вводу */
+
 input[type="text"], input[type="number"], select {
     padding: 10px;
     border: 2px solid #46271b;
     border-radius: 5px;
-    font-size: 14px; /* Зменшено розмір шрифту */
+    font-size: 14px; 
     color: #46271b;
     transition: border-color 0.3s ease;
-    width: 100%; /* Встановлюємо ширину на 100% */
+    width: 100%; 
 }
 
-/* Фокус на полях вводу */
+
 input[type="text"]:focus, input[type="number"]:focus, select:focus {
     border-color: #20120d;
     outline: none;
 }
 
-/* Кнопка відправки */
+
 button[type="submit"] {
     padding: 12px 20px;
     background-color: #46271b;
@@ -75,15 +74,15 @@ button[type="submit"] {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: 100%; /* Ширина кнопки 100% */
+    width: 100%; 
 }
 
-/* Кнопка на ховер */
+
 button[type="submit"]:hover {
     background-color: #20120d;
 }
 
-/* Стилі для футера */
+
 footer {
     background-color: #46271b;
     border-radius: 30px;
