@@ -4,38 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{%block title%}{%endblock%}</title>
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/logo.png')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css')}}">
+    <title>{% block title %}Admin Panel{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/logo.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+
 </head>
 
-
 <body>
-    {%block body%}{%endblock%}
+    {% block body %}{% endblock %}
+
     <div id="page-container">
         <div id="content-wrap">
             <header-admin>
-
-                <img class="logo" src="{{ url_for('static', filename='images/logo.png')}}" alt="our logo">
+                <img class="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="Our logo">
                 <div class="header-content">
-                <span class="header-text">Admin Panel v.01</span>
-                <ul class="header-menu">
-                    <li><a href="addform">Add a Product</a></li>
-                    <li><a href="menu">Orders</a></li>
-                    <li><a href="about">Log Out</a></li>
-                </ul>
-            </div>
+                    <span class="header-text">Admin Panel v.01</span>
+                    <ul class="header-menu">
 
-
-            </header>
-
+                        <li><a href="addform">Add a Product</a></li>
+                        <li><a href="menu">Orders</a></li>
+                        
+                        {% if current_user.is_authenticated %}
+                        <div class="logout-user">
+                            <span>Logged in as {{ current_user.username }}</span> 
+                        <li>
+                        </div>
+                        <li> <a href="logout-btn"><form id="logout-btn" action="{{ url_for('logout') }}" method="POST">
+                            <button id="logout-btn1" type="submit">Logout</button>
+                        </form>
+                    </a>
+                </li>
+                        
+                    {% endif %}
+                    </ul>
+                </div>
+            </header-admin>
         </div>
-        {%block addform%}{%endblock%}
 
+        {% block addform %}{% endblock %}
 
         <footer>
-            h
+            <p>© 2025 Admin Panel</p>
         </footer>
     </div>
 
