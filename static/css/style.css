@@ -83,6 +83,7 @@ footer {
 }
 
 ul.header-menu li a {
+    font-family: 'Times New Roman', Times, serif;
     color: white; 
     text-decoration: none; 
     font-size: 18px;
