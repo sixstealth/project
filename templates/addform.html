@@ -6,12 +6,22 @@
 
 {%block addform%}
 <div class="adding-form">
-    <h1>Adding the Product</h1>
-    <form method="post">
-        <input type="text" class="adding-form" name="title" id="title">
-        <input type="number" class="adding-form" name="price" id="price">
-<button class="btn btn-success" type="submit">Add a Product</button>
+    <h1>
+        <img class="adding_the_product_text" src="{{ url_for('static', filename='images/adding_the_product_text.png')}}" alt="Adding The Product">
+    </h1>
+    <form method="post" enctype="multipart/form-data">
+        <label for="title">Product Title</label>
+        <input type="text" name="title" id="title" placeholder="Product Title" required>
+
+        <label for="price">Price</label>
+        <input type="number" name="price" id="price" placeholder="Price" required>
+
+        <label for="image">Upload Image</label>
+        <input type="file" name="image" id="image" accept="image/*" required>
+
+        <button class="btn btn-success" type="submit">Add a Product</button>
     </form>
 </div>
+
 
 {%endblock%}
