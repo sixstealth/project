@@ -1,7 +1,9 @@
 header {
-    display: flex;
-    margin: 0.5%;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
+    justify-content: space-between;
+    margin: 0.5%;
     border-radius: 30px;
     padding: 25px;
     resize: both;
@@ -9,16 +11,17 @@ header {
     background: #46271b;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
 }
+.header-content{
+        margin:auto;
+}
+
 
 .logo {
-    align-items: flex-start;
-    margin: 0;
+    
     width: 100px;
     height: auto;
 }
-header .logo, header .header-text{
-    justify-content: space-between;
-}
+
 
 #page-container {
     display: flex;
@@ -45,10 +48,10 @@ body {
     box-sizing: border-box;
 }
 
-.header-text {
+.header-text { 
+    display: flex;
     color: white;
     font-family: fantasy;
-
     font-size: 50px;
 }
 
