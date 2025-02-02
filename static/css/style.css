@@ -94,3 +94,26 @@ ul.header-menu li a {
 ul.header-menu li a:hover {
     background-color: #20120d; 
 }
+
+.adding-form{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 25%;
+    background-color:#46271b
+}
+
+header-admin {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.5%;
+    border-radius: 30px;
+    padding: 25px;
+    resize: both;
+    backdrop-filter: blur(10px);
+    background: #46271b;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+}

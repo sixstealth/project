@@ -1,0 +1,17 @@
+{%extends 'admin.html'%}
+
+{%block title%}
+<title>Admin Panel</title>
+{%endblock%}
+
+{%block addform%}
+<div class="adding-form">
+    <h1>Adding the Product</h1>
+    <form method="post">
+        <input type="text" class="adding-form" name="title" id="title">
+        <input type="number" class="adding-form" name="price" id="price">
+<button class="btn btn-success" type="submit">Add a Product</button>
+    </form>
+</div>
+
+{%endblock%}

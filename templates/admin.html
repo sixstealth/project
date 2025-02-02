@@ -14,16 +14,15 @@
     {%block body%}{%endblock%}
     <div id="page-container">
         <div id="content-wrap">
-            <header>
+            <header-admin>
 
                 <img class="logo" src="{{ url_for('static', filename='images/logo.png')}}" alt="our logo">
                 <div class="header-content">
-                <span class="header-text">Best Restraunt</span>
+                <span class="header-text">Admin Panel v.01</span>
                 <ul class="header-menu">
-                    <li><a href="index">Home</a></li>
-                    <li><a href="menu">Menu</a></li>
-                    <li><a href="about">About Us</a></li>
-                    <li><a href="contact">Contact</a></li>
+                    <li><a href="index">Add a Product</a></li>
+                    <li><a href="menu">Orders</a></li>
+                    <li><a href="about">Log Out</a></li>
                 </ul>
             </div>
 
@@ -31,7 +30,7 @@
             </header>
 
         </div>
-        {%block admin%}{%endblock%}
+        {%block addform%}{%endblock%}
 
 
         <footer>

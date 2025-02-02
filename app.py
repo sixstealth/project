@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///shop.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 db = SQLAlchemy(app)
 class Item(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -18,6 +20,10 @@ def index():
 @app.route('/about')
 def about():
     return render_template("about.html")
+
+@app.route('/admin')
+def admin():
+    return render_template("admin.html")
 
 with app.app_context():
     db.create_all()
