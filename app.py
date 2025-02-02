@@ -2,8 +2,14 @@ from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLAlCHEMY_DATABASE_URI'] = 'sqllite:///restaraunt.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///shop.db'
 db = SQLAlchemy(app)
+class Item(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    title = db.Column(db.String, nullable = False)
+    price = db.Column(db.Float, nullable = False)
+    isActive = db.Column(db.Boolean, default = True)
+    text = db.Column(db.Text, nullable = False)
 
 @app.route('/')
 def index():
@@ -12,6 +18,9 @@ def index():
 @app.route('/about')
 def about():
     return render_template("about.html")
+
+with app.app_context():
+    db.create_all()
 
 
 
