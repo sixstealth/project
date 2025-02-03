@@ -1,5 +1,5 @@
 body {
-    background-color: #F5E8D9;
+    background-color: #f3e8e1;
     font-family: 'Poppins', sans-serif;
     margin: 0;
     display: flex;
@@ -9,11 +9,11 @@ body {
 }
 
 .contact-main {
-    background-color: #46271b; 
-    color: #eae0ce;
-    padding: 30px;
+    background-color: #e8d8cc;
+    color: #5c3d2e;
+    padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(102, 51, 0, 0.1);
     width: 100%;
     max-width: 600px;
     text-align: center;
@@ -22,32 +22,33 @@ body {
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
 }
 
 .contact-form label {
-    font-size: 1.1em;
+    font-size: 1em;
+    color: #a67c52;
 }
 
 .contact-form input,
 .contact-form textarea {
     padding: 10px;
     font-size: 1em;
-    border: 1px solid #eae0ce;
+    border: 1px solid #a67c52;
     border-radius: 8px;
 }
 
 .contact-form button {
-    background-color: #eae0ce;
-    color: #46271b;
+    background-color: #a67c52;
+    color: white;
     padding: 10px 16px;
     border: none;
     border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: background-color 0.3s ease;
 }
 
 .contact-form button:hover {
-    background-color: #08aa08;
+    background-color: #553616;
 }
