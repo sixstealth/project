@@ -157,7 +157,7 @@ class Item(db.Model):
 
 
 
-@app.route('/')
+@app.route('/','/main','/home')
 def index():
     return render_template("index.html")
 
