@@ -9,17 +9,21 @@
     <h2>Checkout</h2>
     
     <form method="POST">
-        <label for="customer_name">Name:</label>
-        <input type="text" name="customer_name" required>
-        
-        <label for="customer_address">Address:</label>
-        <input type="text" name="customer_address" required>
 
-        <label for="payment_method">Payment Method:</label>
-        <select name="payment_method" required>
-            <option value="cash">Cash</option>
-            <option value="card">Card</option>
-        </select>
+
+            <label for="customer_name">Name</label>
+            <input type="text" name="customer_name" required>
+        
+            <label for="customer_address">Address</label>
+            <input type="text" name="customer_address" required>
+        
+            <label for="payment_method">Payment Method</label>
+            <input type="text" name="payment_method" required>  
+        
+            <button type="submit">Place Order</button>
+     
+        
+        
 
         <h3>Your Cart:</h3>
         {% for item in cart_items %}

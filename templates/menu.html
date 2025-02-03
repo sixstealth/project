@@ -4,6 +4,8 @@
 
 {% block menu %}
 <div class="container">
+    <h2>Menu</h2>
+
     {% if items %}
         <div class="menu-items">
             {% for el in items %}
@@ -16,9 +18,10 @@
                     <h3>{{ el.title }}</h3>
                     <p>{{ el.text }}</p>
                     <p class="price">${{ el.price }}</p>
+
                     <form action="{{ url_for('add_to_cart', item_id=el.id) }}" method="POST">
-                        <input type="number" name="quantity" value="1" min="1" />
-                        <button type="submit" class="btn btn-success">Add to Cart</button>
+                        <input type="number" name="quantity" value="1" min="1" /> 
+                        <button type="submit" class="btn btn-success">Add to Cart</button> 
                     </form>
                 </div>
             {% endfor %}

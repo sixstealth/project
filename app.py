@@ -109,7 +109,7 @@ def mark_as_completed(order_id):
     order = Order.query.get_or_404(order_id)
 
 
-    if current_user.is_authenticated and current_user.username == 'admin':
+    if current_user.is_authenticated:
         order.status = 'Completed'
         db.session.commit()
         flash('Order marked as completed.')
@@ -122,18 +122,11 @@ def mark_as_completed(order_id):
 @login_required
 def orders():
  
-    if current_user.username != 'admin':
-        flash('You are not authorized to view this page.')
-        return redirect(url_for('menu'))
-
     orders = Order.query.filter_by(status='Pending').all() 
     return render_template('orders.html', orders=orders)
 
 @app.route('/add_to_cart/<int:item_id>', methods=['POST'])
 def add_to_cart(item_id):
-    if not current_user.is_authenticated:
-        flash('You need to log in to add items to the cart.')
-        return redirect(url_for('login'))
 
     quantity = int(request.form.get('quantity', 1))  
     item = Item.query.get_or_404(item_id)
@@ -144,7 +137,16 @@ def add_to_cart(item_id):
     db.session.commit()
 
     flash(f"{item.title} added to your cart.")
-    return redirect(url_for('menu'))
+    return redirect(url_for('cart'))
+
+@app.route('/remove_from_cart/<int:item_id>', methods=['POST'])
+def remove_from_cart(item_id):
+    cart_item = Cart.query.filter_by(user_id=current_user.id, item_id=item_id).first()
+    if cart_item:
+        db.session.delete(cart_item)
+        db.session.commit()
+        flash("Item removed from cart.")
+    return redirect(url_for('cart'))
 
 
 class Item(db.Model):
@@ -181,14 +183,20 @@ def index():
 def checkout():
     cart_items = Cart.query.filter_by(user_id=current_user.id).all()
 
-    if request.method == 'POST':
-        customer_name = request.form['customer_name']
-        customer_address = request.form['customer_address']
-        payment_method = request.form['payment_method']
+    if not cart_items:
+        flash("Your cart is empty!")
+        return redirect(url_for('menu'))
 
-        if not cart_items:
-            flash("Your cart is empty!")
-            return redirect(url_for('menu'))
+    if request.method == 'POST':
+        customer_name = request.form.get('customer_name') 
+        customer_address = request.form.get('customer_address')  
+        payment_method = request.form.get('payment_method')  
+
+
+        if not customer_name or not customer_address or not payment_method:
+            flash("Please fill in all the fields!")
+            return render_template('checkout.html', cart_items=cart_items)
+
 
         for cart_item in cart_items:
             new_order = Order(
@@ -199,14 +207,15 @@ def checkout():
             )
             db.session.add(new_order)
 
-
         Cart.query.filter_by(user_id=current_user.id).delete()
         db.session.commit()
 
         flash("Order placed successfully!")
-        return redirect(url_for('orders'))  
+        return redirect(url_for('cart'))  
 
     return render_template('checkout.html', cart_items=cart_items)
+
+
 
 
 @app.route('/addform', methods=['POST', 'GET'])
@@ -240,13 +249,50 @@ def addform():
             db.session.commit()
             flash('Product successfully added!')
             print("Product added to base!")
-            return redirect('/addform')
+            return redirect('addform')
         except Exception as e:
             db.session.rollback()
             flash(f'Error: {str(e)}')
             print(f"Error during addition: {str(e)}")
 
     return render_template('addform.html', data=data)
+
+
+@app.route('/cart', methods=['GET', 'POST'])
+def cart():
+    cart_items = Cart.query.filter_by(user_id=current_user.id).all()  
+
+    if request.method == 'POST':
+ 
+        customer_name = request.form.get('customer_name')  
+        customer_address = request.form.get('customer_address')  
+        payment_method = request.form.get('payment_method')  
+
+
+        if not customer_name or not customer_address or not payment_method:
+            flash("Please fill in all the fields!")
+            return render_template('cart.html', cart_items=cart_items)
+
+        
+        for cart_item in cart_items:
+            new_order = Order(
+                user_id=current_user.id,
+                item_id=cart_item.item_id,
+                quantity=cart_item.quantity,
+                status="Pending"
+            )
+            db.session.add(new_order)
+
+        Cart.query.filter_by(user_id=current_user.id).delete()
+        db.session.commit()
+
+        flash("Your order has been placed successfully!")
+        return redirect(url_for('orders'))  
+
+    return render_template('cart.html', cart_items=cart_items)
+
+
+
 
 @app.route('/about')
 def about():
