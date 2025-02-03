@@ -67,7 +67,7 @@ body {
 .btn-success {
     font-family: 'Times New Roman', Times, serif;
     background-color: #eae0ce;
-    color: white;
+    color: #46271b;
     padding: 10px 16px;
     border: none;
     font-size: 16px;
@@ -79,6 +79,7 @@ body {
 
 .btn-success:hover {
     background-color: #13e035;
+    color: white
 }
 
 .product-list {
@@ -115,7 +116,7 @@ h2{
 .btn-danger {
     font-family: 'Times New Roman', Times, serif;
     background-color: #eae0ce;
-    color: rgb(252, 0, 0);
+    color: #ae201b;
     padding: 8px 14px;
     border: none;
     font-size: 14px;
@@ -125,5 +126,6 @@ h2{
 }
 
 .btn-danger:hover {
-    background-color: #d9534f;
+    background-color: #ae201b;
+    color: white
 }

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %} Contact {% endblock %}
+
+<head> 
+    <style>
+    body {
+        background-color: red !important;
+    }
+</style>
+</head>
+
+{% block body %}
+<main class="contact-main">
+    <h1>Contact Us</h1>
+    <p>If you have any questions or comments, feel free to reach out!</p>
+
+    <form action="#" method="POST" class="contact-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="4" required></textarea><br>
+
+        <button type="submit">Send Message</button>
+    </form>
+</main>
+{% endblock %}
+

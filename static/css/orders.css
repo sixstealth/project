@@ -3,8 +3,8 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    background-color: #f3e8e1;
 }
-
 
 .orders-list {
     display: grid;
@@ -12,33 +12,40 @@
     width: 100%;
     max-height: 600px; 
     overflow-y: auto;  
-    background-color: #f9f9f9;
+    background-color: #e8d8cc;
     border-radius: 8px;
+    padding: 15px;
+}
+
+.orders-list h2 {
+    color: #a67c52; 
+    font-size: 1.8em;
+    font-weight: bold;
 }
 
 
 .order-item {
-    background-color: #fff;
+    background-color: #fdf6f0;
     padding: 20px;
     margin-bottom: 15px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(102, 51, 0, 0.1);
     transition: transform 0.3s ease;
+    border-left: 5px solid #a67c52;
 }
 
 .order-item:hover {
-    transform: scale(1.02); 
+    transform: scale(1.02);
 }
 
 .order-item p {
     font-size: 1.2em;
-    color: #333;
+    color: #5c3d2e;
     margin: 5px 0;
 }
 
-
 .order-item form button {
-    background-color: #28a745;
+    background-color: #a67c52;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -49,7 +56,7 @@
 }
 
 .order-item form button:hover {
-    background-color: #218838;
+    background-color: #553616;
 }
 
 .order-status {
@@ -57,9 +64,9 @@
 }
 
 .pending-status {
-    color: #ff5722;
+    color: #dd562d;
 }
 
 .completed-status {
-    color: #28a745;
+    color: #6b8e23;
 }

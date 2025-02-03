@@ -130,7 +130,6 @@ def orders():
     return render_template('orders.html', orders=orders)
 
 @app.route('/add_to_cart/<int:item_id>', methods=['POST'])
-@login_required
 def add_to_cart(item_id):
     quantity = int(request.form.get('quantity', 1))  
 
@@ -249,7 +248,9 @@ def logout():
     logout_user()
     return redirect(url_for('login'))
 
-
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 if __name__ == "__main__":
     app.run(debug=True) 
