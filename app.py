@@ -174,9 +174,7 @@ class Cart(db.Model):
 
 
 
-@app.route('/')
-def index():
-    return render_template("index.html")
+
 
 
 @app.route('/checkout', methods=['GET', 'POST'])
@@ -312,6 +310,9 @@ def admin():
     return render_template("admin.html")
 
 @app.route('/home')
+@app.route('/main')
+@app.route('/index')
+@app.route('/')
 def home():
     return render_template('home.html')
 
