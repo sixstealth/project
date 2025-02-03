@@ -188,7 +188,7 @@ def checkout():
 def addform():
     data = Item.query.all()
     if request.method == 'POST':
-        print("POST reques recieved")  
+        print("POST request recieved")  
         
         title = request.form.get('title')
         price = request.form.get('price')
