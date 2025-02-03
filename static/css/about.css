@@ -1,60 +1,59 @@
-header {
-    margin: 0.5%;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 30px;
-    padding: 25px;
-    resize: both;
-    backdrop-filter: blur(10px);
-    background: #46271b;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
-}
-
-#logo {
-    margin: 0;
-    width: 100px;
-    height: auto;
-}
-
-#page-container {
-    display: flex;
-    flex-direction: column;
-    background: #eae0ce;
-    min-height: 100vh;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-html,
-body,
-#page-container {
-    height: 100%;
-}
-
-html,
 body {
+    font-family: 'Arial', sans-serif;
+    background-color: #d8c8b9;
+    color: #4a3c32;
     margin: 0;
     padding: 0;
+    text-align: center; /* Ensures text is centered */
+}
+
+.about-container {
+    width: 100%; /* Make sure it spans full width */
+    max-width: 800px; /* Prevents excessive width */
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #fff7f0;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.about-content {
     width: 100%;
-    box-sizing: border-box;
+    margin-bottom: 20px; /* Adds space between text and image */
 }
 
-span {
-    color: white;
-    font-family: fantasy;
-    left: 50%;
-    bottom: 43%;
-    position: absolute;
-}
-
-footer {
-    background-color: #46271b;
-    border-radius: 30px;
-    margin-top: auto;
+.about-content h1 {
+    font-size: 36px;
+    color: #3d2a1f;
     margin-bottom: 20px;
-    padding: 30px;
-    margin-left: 20px;
-    margin-right: 20px;
+}
+
+.about-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.about-image {
+    width: 100%; /* Ensures image container takes full width */
+    text-align: center; /* Centers the image */
+}
+
+.about-image img {
+    width: 100%; /* Makes sure image scales properly */
+    max-width: 600px; /* Prevents it from being too large */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure proper stacking on mobile */
+@media (max-width: 768px) {
+    .about-container {
+        padding: 20px;
+    }
+
+    .about-content {
+        margin-bottom: 20px;
+    }
 }
