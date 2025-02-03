@@ -131,18 +131,21 @@ def orders():
 
 @app.route('/add_to_cart/<int:item_id>', methods=['POST'])
 def add_to_cart(item_id):
+    if not current_user.is_authenticated:
+        flash('You need to log in to add items to the cart.')
+        return redirect(url_for('login'))
+
     quantity = int(request.form.get('quantity', 1))  
-
     item = Item.query.get_or_404(item_id)
-    
 
-    order = Order(user_id=current_user.id, item_id=item.id, quantity=quantity)
+    cart_item = Cart(user_id=current_user.id, item_id=item.id, quantity=quantity)
 
-    db.session.add(order)
+    db.session.add(cart_item)
     db.session.commit()
 
     flash(f"{item.title} added to your cart.")
     return redirect(url_for('menu'))
+
 
 class Item(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -152,6 +155,18 @@ class Item(db.Model):
     text = db.Column(db.String(500))
     image_filename = db.Column(db.String(100))  
 
+class Cart(db.Model):
+    __tablename__ = 'cart'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    item_id = db.Column(db.Integer, db.ForeignKey('item.id'), nullable=False)
+    quantity = db.Column(db.Integer, nullable=False)
+
+    user = db.relationship('User', backref=db.backref('cart_items', lazy=True))
+    item = db.relationship('Item', backref=db.backref('cart_items', lazy=True))
+
+    def __repr__(self):
+        return f"<Cart {self.id}>"
 
 
 
@@ -164,23 +179,35 @@ def index():
 
 @app.route('/checkout', methods=['GET', 'POST'])
 def checkout():
+    cart_items = Cart.query.filter_by(user_id=current_user.id).all()
+
     if request.method == 'POST':
         customer_name = request.form['customer_name']
         customer_address = request.form['customer_address']
-        order_item = request.form['order_item']
-        quantity = request.form['quantity']
         payment_method = request.form['payment_method']
-        new_order = Order(customer_name=customer_name, customer_address=customer_address,
-                          item_id=order_item, quantity=quantity, payment_method=payment_method)
-        db.session.add(new_order)
+
+        if not cart_items:
+            flash("Your cart is empty!")
+            return redirect(url_for('menu'))
+
+        for cart_item in cart_items:
+            new_order = Order(
+                user_id=current_user.id,
+                item_id=cart_item.item_id,
+                quantity=cart_item.quantity,
+                status="Pending"
+            )
+            db.session.add(new_order)
+
+
+        Cart.query.filter_by(user_id=current_user.id).delete()
         db.session.commit()
 
+        flash("Order placed successfully!")
+        return redirect(url_for('orders'))  
 
-        return redirect(url_for('order_confirmation', order_id=new_order.id))
-    
+    return render_template('checkout.html', cart_items=cart_items)
 
-    items = Item.query.all()
-    return render_template('checkout.html', items=items)
 
 @app.route('/addform', methods=['POST', 'GET'])
 @login_required

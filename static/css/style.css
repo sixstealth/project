@@ -166,3 +166,15 @@ header-admin {
     padding: 0; 
     cursor: pointer; 
 }
+
+.contact-body{
+    text-align: center;
+    justify-content: center;
+}
+
+.footer-info{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.footer-info a{
+    color: white;
+}
