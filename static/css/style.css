@@ -64,7 +64,33 @@ footer {
     margin-left: 20px;
     margin-right: 20px;
 }
+.footer-info, .footer-hours, .footer-legal {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 10px;
+    text-align: left;
+}
 
+.footer-info p, .footer-hours p, .footer-legal p {
+    margin: 2px 0;
+}
+
+.footer-legal a {
+    color: #bbb;
+    text-decoration: none;
+}
+
+.footer-legal a:hover {
+    color: #fff;
+}
+
+@media (max-width: 600px) {
+    .footer-info, .footer-hours, .footer-legal {
+        display: block;
+        text-align: center;
+        margin: 5px 0;
+    }
+}
 .header-menu {
     list-style-type: none; 
     padding: 0; 

@@ -188,17 +188,17 @@ def checkout():
 def addform():
     data = Item.query.all()
     if request.method == 'POST':
-        print("POST-запит отримано")  
+        print("POST reques recieved")  
         
         title = request.form.get('title')
         price = request.form.get('price')
         image = request.files.get('image') 
 
-        print(f"Отримано title: {title}, price: {price}")  
+        print(f"Recieved title: {title}, price: {price}")  
 
         if not title or not price:
-            flash('Заповніть всі поля!')
-            print("Форма не заповнена")
+            flash('Fill in all fields!')
+            print("Form is not filled!")
             return render_template('addform.html')
 
         if image and allowed_file(image.filename):  
@@ -212,13 +212,13 @@ def addform():
             item = Item(title=title, price=float(price), text="", image_filename=filename if image_path else None)
             db.session.add(item)
             db.session.commit()
-            flash('Продукт успішно додано!')
-            print("Продукт додано в базу!")
+            flash('Product successfully added!')
+            print("Product added to base!")
             return redirect('/addform')
         except Exception as e:
             db.session.rollback()
-            flash(f'Помилка: {str(e)}')
-            print(f"Помилка під час додавання: {str(e)}")
+            flash(f'Error: {str(e)}')
+            print(f"Error during addition: {str(e)}")
 
     return render_template('addform.html', data=data)
 
