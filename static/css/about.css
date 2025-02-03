@@ -1,15 +1,15 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: #d8c8b9;
-    color: #4a3c32;
+    color: #573b27;
     margin: 0;
     padding: 0;
-    text-align: center; /* Ensures text is centered */
+    text-align: center; 
 }
 
 .about-container {
-    width: 100%; /* Make sure it spans full width */
-    max-width: 800px; /* Prevents excessive width */
+    width: 100%; 
+    max-width: 800px; 
     margin: 50px auto;
     padding: 40px;
     background-color: #fff7f0;
@@ -19,7 +19,7 @@ body {
 
 .about-content {
     width: 100%;
-    margin-bottom: 20px; /* Adds space between text and image */
+    margin-bottom: 20px; 
 }
 
 .about-content h1 {
@@ -35,19 +35,19 @@ body {
 }
 
 .about-image {
-    width: 100%; /* Ensures image container takes full width */
-    text-align: center; /* Centers the image */
+    width: 100%; 
+    text-align: center; 
 }
 
 .about-image img {
-    width: 100%; /* Makes sure image scales properly */
-    max-width: 600px; /* Prevents it from being too large */
+    width: 100%; 
+    max-width: 600px; 
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Ensure proper stacking on mobile */
+
 @media (max-width: 768px) {
     .about-container {
         padding: 20px;
