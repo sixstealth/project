@@ -178,3 +178,10 @@ header-admin {
 .footer-info a{
     color: white;
 }
+
+#cart{
+
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    color: #ffffff;
+}

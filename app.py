@@ -137,7 +137,7 @@ def add_to_cart(item_id):
     db.session.commit()
 
     flash(f"{item.title} added to your cart.")
-    return redirect(url_for('cart'))
+    return redirect(url_for('menu'))
 
 @app.route('/remove_from_cart/<int:item_id>', methods=['POST'])
 def remove_from_cart(item_id):
@@ -283,8 +283,7 @@ def cart():
             )
             db.session.add(new_order)
 
-        Cart.query.filter_by(user_id=current_user.id).delete()
-        db.session.commit()
+
 
         flash("Your order has been placed successfully!")
         return redirect(url_for('orders'))  
