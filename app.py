@@ -137,7 +137,7 @@ def add_to_cart(item_id):
     db.session.commit()
 
     flash(f"{item.title} added to your cart.")
-    return redirect(url_for('cart'))
+    return redirect(url_for('menu'))
 
 @app.route('/remove_from_cart/<int:item_id>', methods=['POST'])
 def remove_from_cart(item_id):
@@ -174,9 +174,7 @@ class Cart(db.Model):
 
 
 
-@app.route('/')
-def index():
-    return render_template("index.html")
+
 
 
 @app.route('/checkout', methods=['GET', 'POST'])
@@ -283,8 +281,7 @@ def cart():
             )
             db.session.add(new_order)
 
-        Cart.query.filter_by(user_id=current_user.id).delete()
-        db.session.commit()
+
 
         flash("Your order has been placed successfully!")
         return redirect(url_for('orders'))  
@@ -313,6 +310,9 @@ def admin():
     return render_template("admin.html")
 
 @app.route('/home')
+@app.route('/main')
+@app.route('/index')
+@app.route('/')
 def home():
     return render_template('home.html')
 
