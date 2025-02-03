@@ -1,6 +1,23 @@
-{% extends 'base.html'%} 
+{% extends 'base.html' %}
 
+{% block title %} About Us {% endblock %}
 
-{%block title%} Main Page {%endblock%} 
+{% block about %}
 
-{%block body%} {%endblock%}
+<div class="about-container">
+    <div class="about-content">
+        <h1>
+            <img class="welcome!" src="{{ url_for('static', filename='images/welcome!.png') }}" alt="WELCOME!">
+        </h1>
+        <p>
+            Welcome to the A&K Best Restaurant! We are happy to see you on our web page. Here you can purchase our delicious food and we will handle your order!
+        </p>
+        <p>
+            People and cats around the world agree A&K-Pizza is the purrfection you've been dreaming of!
+        </p>
+    </div>
+
+   
+</div>
+
+{% endblock %}

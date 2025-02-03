@@ -312,8 +312,9 @@ def admin():
     print(current_user.is_authenticated)
     return render_template("admin.html")
 
-
-
+@app.route('/home')
+def home():
+    return render_template('home.html')
 
 @app.route('/logout', methods=['POST'])
 @login_required

@@ -19,32 +19,18 @@
     margin-bottom: 20px; 
 }
 
-.about-content h1 {
-    font-size: 36px;
-    color: #3d2a1f;
-    margin-bottom: 20px;
+.about-content h1 img {
+    max-width: 30%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 .about-content p {
     font-size: 18px;
+    color:rgb(75, 36, 10);
     line-height: 1.6;
     margin-bottom: 15px;
-}
-
-.about-image {
-
-    text-align: right;
-        position: relative;
-        display: inline-block;
-    }
-
-
-.about-image img {
-    position: relative;
-    width: auto; 
-    max-width: 600px; 
-    height: 100%;
-    border-radius: 8px;
 }
 
 
